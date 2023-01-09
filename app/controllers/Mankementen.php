@@ -16,9 +16,15 @@ class Mankementen extends Controller
         $result = $this->mankementModel->getMankement();
         if($result)
         {
+            $instructeurNaam = $result[0]->INNA;
+            $email = $result[0]->EM;
+            $autoKenteken = $result[0]->AK;
             $autoType = $result[0]->AT;
         } else {
+            $instructeurNaam = '';
+            $email = '';
             $autoType = '';
+            $autoKenteken = '';
         }
         // var_dump($result);
         $rows = '';

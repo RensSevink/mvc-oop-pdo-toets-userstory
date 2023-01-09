@@ -12,4 +12,5 @@
         <?php echo $data['rows'] ?>
     </tbody>
 </table>
+<button onclick="window.location.href='<?= URLROOT ?>/mankementen/addMankement/<?= $data['autoKenteken']; ?>-<?= $data['autoType']; ?>'">Mankement Toevoegen</button>
 <?php require(APPROOT . '/views/includes/footer.php') ?>
