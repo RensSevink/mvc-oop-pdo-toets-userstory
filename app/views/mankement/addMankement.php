@@ -3,10 +3,9 @@
 
 
 <form action="<?= URLROOT ?>/mankementen/addMankement" method="post">
-    <label for="Mankement">Invoeren Mankement</label><br>
-    <input type="text" name="Mankement" id="Mankement">
-    <!-- <div class="topicError">Meer dan 255 characters</div> -->
-    <br> <br>
-    <input type="submit" value="Voer in">
+    <label for="mankement">Mankementen</label><br>
+    <input type="text" name="mankement" id="mankement"><br>
+    <br>
+    <input type="submit" value="Toevoegen">
 </form>
 <?php require(APPROOT . '/views/includes/footer.php') ?>

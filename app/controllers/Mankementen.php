@@ -28,15 +28,14 @@ class Mankementen extends Controller
             <td>$info->Datum</td>
             <td>$info->Mankement</td>
             </tr>";
-            $first = " Auto van Instructeur: $info->Naam <br>
+            $first = "  Instructeur: $info->Naam <br>
                         Email: $info->Email <br>
-                        Kenteken: $info->Kenteken <br>
-                        Type: $info->Type <br>
+                        Kenteken-Type: $info->Kenteken $info->Type
             ";
         }
 
         $data = [
-            'title' => "Invoegen Mankementen",
+            'title' => "Overzicht Mankementen",
             'rows' => $rows,
             'first' => $first
         ];
@@ -66,9 +65,9 @@ class Mankementen extends Controller
             if (empty($data['Errors'])) {
                 $result = $this->MankementenModel->addMankement($_POST);
                 if ($result) {
-                    echo "<p>Het nieuwe Mankement is toegevoegd</p>";
+                    echo "<p>Het nieuwe mankement is toegevoegd</p>";
                 } else {
-                    echo "<p>Het nieuwe Mankement is niet toegevoegd, probeer het opnieuw</p>";
+                    echo "<p>Het nieuwe mankement is niet toegevoegd, probeer het opnieuw</p>";
                 }
                 header('Refresh:5; url=' . URLROOT . '/mankementen/index/');
             } else {
