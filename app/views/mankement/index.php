@@ -2,8 +2,8 @@
 <h3><?= $data['title'] ?></h3>
 <table border='1'>
     <thead>
-        <th>Type</th>
-        <th>Kenteken</th>
+        <th>Datum</th>
+        <th>Mankement</th>
         <th>Km stand Toevoegen</th>
     </thead>
     <tbody>

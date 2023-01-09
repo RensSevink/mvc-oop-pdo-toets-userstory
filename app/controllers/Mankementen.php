@@ -1,19 +1,19 @@
 <?php
 
-class Wagenparken extends Controller
+class Mankementen extends Controller
 {
 
-    private $wagenparkModel;
+    private $mankementModel;
 
 
     public function __construct()
     {
-        $this->wagenparkModel = $this->model('Wagenpark');
+        $this->mankementModel = $this->model('Mankement');
     }
 
     public function index()
     {
-        $result = $this->wagenparkModel->getKmstand();
+        $result = $this->mankementModel->getMankement();
         // if ($result) {
         //     $instrecteurNaam = $result[0]->INNA;
         // } else {
@@ -24,9 +24,9 @@ class Wagenparken extends Controller
         foreach ($result as $info) {
             $rows .= "
             <tr>
-            <td>$info->Type</td>
-            <td>$info->Kenteken</td>
-            <td><a href='" . URLROOT . "/wagenparken/addKmstand/{$info->id}'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
+            <td>$info->Datum</td>
+            <td>$info->Mankement</td>
+            <td><a href='" . URLROOT . "/mankementen/addMankement/{$info->id}'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
             </tr>";
             // var_dump($info);
         }
@@ -34,18 +34,18 @@ class Wagenparken extends Controller
         // var_dump($result);
 
         $data = [
-            'title' => "Invoegen km stand",
+            'title' => "Mankement toevoegen",
             'rows' => $rows
         ];
-        $this->view('wagenpark/index', $data);
+        $this->view('mankement/index', $data);
     }
 
 
-    public function addKmstand($AutoId = NULL)
+    public function addMankement($AutoId = NULL)
     {
         $data = [
-            'title' => 'Invoegen Kilometerstand',
-            'AutoId' => $AutoId,
+            'title' => 'Invoegen Mankement',
+            'MankementId' => $MankementId,
             'kmstandErrors' => ''
         ];
 
@@ -67,9 +67,9 @@ class Wagenparken extends Controller
                 } else {
                     echo "<p>De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw</p>";
                 }
-                header('Refresh:5; url=' . URLROOT . '/wagenparken/index/');
+                header('Refresh:5; url=' . URLROOT . '/mankement/index/');
             } else {
-                header('refresh:3; url=' . URLROOT . '/wagenpark/addKmstand/' . $data['AutoId']);
+                header('refresh:3; url=' . URLROOT . '/mankement/addMankement/' . $data['AutoId']);
             }
         }
         $this->view('wagenpark/addKmstand', $data);
