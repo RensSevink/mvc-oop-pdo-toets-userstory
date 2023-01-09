@@ -1,10 +1,12 @@
 <?php require(APPROOT . '/views/includes/header.php') ?>
 <h3><?= $data['title'] ?></h3>
+<h5>Instructeur: <?= $data['instructeurNaam']; ?></h5>
+<h5>E-mailadres: <?= $data['email']; ?></h5>
+<h5>Kenteken Auto: <?= $data['autoKenteken']; ?>-<?= $data['autoType']; ?></h5>
 <table border='1'>
     <thead>
-        <th>Datum<?=</th>
+        <th>Datum</th>
         <th>Mankement</th>
-        <th>Km stand Toevoegen</th>
     </thead>
     <tbody>
         <?php echo $data['rows'] ?>

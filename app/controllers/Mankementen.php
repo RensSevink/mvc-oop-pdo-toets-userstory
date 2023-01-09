@@ -14,11 +14,12 @@ class Mankementen extends Controller
     public function index()
     {
         $result = $this->mankementModel->getMankement();
-        // if ($result) {
-        //     $instrecteurNaam = $result[0]->INNA;
-        // } else {
-        //     $instrecteurNaam = '';
-        // }
+        if($result)
+        {
+            $autoType = $result[0]->AT;
+        } else {
+            $autoType = '';
+        }
         // var_dump($result);
         $rows = '';
         foreach ($result as $info) {
@@ -34,7 +35,11 @@ class Mankementen extends Controller
 
         $data = [
             'title' => "Overzicht Mankementen",
-            'rows' => $rows
+            'rows' => $rows,
+            'instructeurNaam' => $instructeurNaam,
+            'email' => $email,
+            'autoKenteken' => $autoKenteken,
+            'autoType' => $autoType
         ];
         $this->view('mankement/index', $data);
     }

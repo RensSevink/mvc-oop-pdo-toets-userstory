@@ -9,7 +9,7 @@ class Mankement
     }
     public function getMankement()
     {
-        $this->db->query("SELECT Mankement.Id, Mankement.AutoId, Mankement.Datum, Mankement.Mankement, Instructeur.Naam, Instructeur.Email, Auto.Kenteken, Auto.Type
+        $this->db->query("SELECT Mankement.Id, Mankement.AutoId, Mankement.Datum, Mankement.Mankement, Instructeur.Naam AS INNA, Instructeur.Email AS EM, Auto.Kenteken AS AK, Auto.Type AS AT
                           FROM Mankement 
                           INNER JOIN Auto
                           ON Mankement.AutoId = Auto.Id
