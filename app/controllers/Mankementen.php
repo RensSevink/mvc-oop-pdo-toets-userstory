@@ -3,61 +3,53 @@
 class Mankementen extends Controller
 {
 
-    private $mankementModel;
+    private $MankementenModel;
 
 
     public function __construct()
     {
-        $this->mankementModel = $this->model('Mankement');
+        $this->MankementenModel = $this->model('Mankement');
     }
 
     public function index()
     {
-        $result = $this->mankementModel->getMankement();
-        if($result)
-        {
-            $instructeurNaam = $result[0]->INNA;
-            $email = $result[0]->EM;
-            $autoKenteken = $result[0]->AK;
-            $autoType = $result[0]->AT;
-        } else {
-            $instructeurNaam = '';
-            $email = '';
-            $autoType = '';
-            $autoKenteken = '';
-        }
+        $result = $this->MankementenModel->getMankement();
+        // if ($result) {
+        //     $instrecteurNaam = $result[0]->INNA;
+        // } else {
+        //     $instrecteurNaam = '';
+        // }
         // var_dump($result);
         $rows = '';
+        $first = '';
         foreach ($result as $info) {
             $rows .= "
             <tr>
             <td>$info->Datum</td>
             <td>$info->Mankement</td>
-            <td><a href='" . URLROOT . "/mankementen/addMankement/2'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
             </tr>";
-            // var_dump($info);
+            $first = " Auto van Instructeur: $info->Naam <br>
+                        Email: $info->Email <br>
+                        Kenteken: $info->Kenteken <br>
+                        Type: $info->Type <br>
+            ";
         }
 
-        // var_dump($result);
-
         $data = [
-            'title' => "Overzicht Mankementen",
+            'title' => "Invoegen Mankementen",
             'rows' => $rows,
-            'instructeurNaam' => $instructeurNaam,
-            'email' => $email,
-            'autoKenteken' => $autoKenteken,
-            'autoType' => $autoType
+            'first' => $first
         ];
         $this->view('mankement/index', $data);
     }
 
 
-    public function addMankement($AutoId = NULL)
+    public function addMankement($InstrecteurId = 2)
     {
         $data = [
             'title' => 'Invoegen Mankement',
-            'MankementId' => $MankementId,
-            'kmstandErrors' => ''
+            'InstrecteurId' => $InstrecteurId,
+            'Errors' => ''
         ];
 
 
@@ -66,23 +58,23 @@ class Mankementen extends Controller
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $data = [
-                'title' => 'Invoegen Kilometerstand',
-                'AutoId' => $_POST['AutoId'],
-                'kmstandErrors' => '',
+                'title' => 'Invoegen Mankementen',
+                'InstrecteurId' => 2,
+                'Errors' => '',
             ];
 
-            if (empty($data['kmstandErrors'])) {
-                $result = $this->wagenparkModel->addKmstand($_POST);
+            if (empty($data['Errors'])) {
+                $result = $this->MankementenModel->addMankement($_POST);
                 if ($result) {
-                    echo "<p>De nieuwe kilometerstand is toegevoegd</p>";
+                    echo "<p>Het nieuwe Mankement is toegevoegd</p>";
                 } else {
-                    echo "<p>De nieuwe kilometerstand is niet toegevoegd, probeer het opnieuw</p>";
+                    echo "<p>Het nieuwe Mankement is niet toegevoegd, probeer het opnieuw</p>";
                 }
-                header('Refresh:5; url=' . URLROOT . '/mankement/index/');
+                header('Refresh:5; url=' . URLROOT . '/mankementen/index/');
             } else {
-                header('refresh:3; url=' . URLROOT . '/mankement/addMankement/' . $data['AutoId']);
+                header('refresh:3; url=' . URLROOT . '/mankement/addMankement/2');
             }
         }
-        $this->view('wagenpark/addKmstand', $data);
+        $this->view('mankement/addMankement', $data);
     }
 }
