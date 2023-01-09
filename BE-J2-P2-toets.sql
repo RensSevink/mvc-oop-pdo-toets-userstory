@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Gegenereerd op: 09 jan 2023 om 09:57
+-- Gegenereerd op: 09 jan 2023 om 10:03
 -- Serverversie: 5.7.31
 -- PHP-versie: 8.1.10
 
@@ -35,7 +35,17 @@ CREATE TABLE IF NOT EXISTS `Auto` (
   `InstructeurId` int(11) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `Instructeur` (`InstructeurId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Auto`
+--
+
+INSERT INTO `Auto` (`Id`, `Kenteken`, `Type`, `InstructeurId`) VALUES
+(1, 'AU-67-IO', 'Golf', 3),
+(2, 'TH-78-KL', 'Ferrari', 2),
+(3, '90-KL-TR', 'Fiat 500', 4),
+(4, 'YY-OP-78', 'Mercedes', 5);
 
 -- --------------------------------------------------------
 
@@ -49,7 +59,18 @@ CREATE TABLE IF NOT EXISTS `Instructeur` (
   `Naam` varchar(51) NOT NULL,
   `Email` varchar(150) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Instructeur`
+--
+
+INSERT INTO `Instructeur` (`Id`, `Naam`, `Email`) VALUES
+(1, 'Groen', 'groen@gmail.com'),
+(2, 'Manhoi', 'manhoi@gmail.com'),
+(3, 'Zoyi', 'zoyi@gmail.com'),
+(4, 'Berthold', 'berthold@gmail.com'),
+(5, 'Denekamp', 'denekamp@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -65,7 +86,18 @@ CREATE TABLE IF NOT EXISTS `Mankement` (
   `Mankement` varchar(300) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `Auto` (`AutoId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `Mankement`
+--
+
+INSERT INTO `Mankement` (`Id`, `AutoId`, `Datum`, `Mankement`) VALUES
+(1, 4, '2023-01-04', 'Profiel rechterband minder dan 2 mm'),
+(2, 2, '2023-01-02', 'Rechter achterlicht kapot'),
+(3, 1, '2023-01-02', 'Spiegel links afgebroken'),
+(4, 2, '2023-01-06', 'Bumper rechtsachter ingedeukt'),
+(5, 2, '2023-01-08', 'Radio kapot');
 
 --
 -- Beperkingen voor geëxporteerde tabellen
