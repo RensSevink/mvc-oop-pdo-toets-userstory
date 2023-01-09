@@ -2,7 +2,7 @@
 <h3><?= $data['title'] ?></h3>
 <table border='1'>
     <thead>
-        <th>Datum</th>
+        <th>Datum<?=</th>
         <th>Mankement</th>
         <th>Km stand Toevoegen</th>
     </thead>

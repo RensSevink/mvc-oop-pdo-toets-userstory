@@ -26,7 +26,6 @@ class Mankementen extends Controller
             <tr>
             <td>$info->Datum</td>
             <td>$info->Mankement</td>
-            <td><a href='" . URLROOT . "/mankementen/addMankement/{$info->id}'><img src='" . URLROOT . "/img/b_report.png' alt='topic'></a></td>
             </tr>";
             // var_dump($info);
         }
@@ -34,7 +33,7 @@ class Mankementen extends Controller
         // var_dump($result);
 
         $data = [
-            'title' => "Mankement toevoegen",
+            'title' => "Overzicht Mankementen",
             'rows' => $rows
         ];
         $this->view('mankement/index', $data);
