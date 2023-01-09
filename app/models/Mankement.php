@@ -15,13 +15,14 @@ class Mankement
                           ON Mankement.AutoId = Auto.Id
                           INNER JOIN Instructeur
                           ON Auto.InstructeurId = Instructeur.Id
-                          WHERE Instructeur.Id = 2;");;
+                          WHERE Instructeur.Id = 2
+                          ORDER BY Mankement.Datum DESC;");;
         $result = $this->db->resultSet();
         return $result;
     }
     public function addMankement($post)
     {
-        $sql = "INSERT INTO Mankement (AutoId, Datum, Mankement) VALUES (2, '2022-12-12', :Mankement)";
+        $sql = "INSERT INTO Mankement (AutoId, Datum, Mankement) VALUES (2, '2023-09-01', :Mankement)";
         $this->db->query($sql);
         // $this->db->bind(':AutoId', $post['AutoId'], PDO::PARAM_INT);
         $this->db->bind(':Mankement', $post['mankement'], PDO::PARAM_STR);
